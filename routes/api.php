@@ -12,12 +12,19 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::group([
+    'prefix' => 'v1'], function() {
+        Route::post('register', 'AuthController@register');
+        Route::post('login', 'AuthController@login');
+        Route::post('recover', 'AuthController@recover');
 
+        Route::get('logout', 'AuthController@logout')
+            ->middleware('jwt.auth');
+    });
 // API routes
 Route::group([
     'prefix' => 'v1',
     'namespace' => 'API\V1',
-    //'middleware' => ['auth:api']], function () {
-    ], function () {
-    Route::get('/', 'HomeController@index');
+    'middleware' => ['jwt.auth']],  function () {
+        Route::get('/', 'HomeController@index');
 });

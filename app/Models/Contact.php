@@ -1,6 +1,6 @@
 <?php
 
-namespace AppModels;
+namespace App\Models;
 
 
 class Contact extends User
