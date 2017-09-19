@@ -13,12 +13,25 @@ class AddProgramToFacility extends Migration
      */
     public function up()
     {
-        // Add program program relation
+        // Add program relation
         Schema::table('scolar_programs', function (Blueprint $table) {
+            $table->string('name');
             $table->integer('parent_id')->unsigned();
 
             $table->foreign('parent_id')->references('id')->on('scolar_programs')->onUpdate('cascade')->onDelete('cascade');
         });
+
+        // Add program scolar year relation
+        Schema::create('scolar_program_scolar_years', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('scolar_year_id')->unsigned();
+            $table->integer('scolar_program_id')->unsigned();
+
+            $table->unique(['scolar_year_id', 'scolar_program_id'], 'scolar_program_scolar_year_unique');
+            $table->foreign('scolar_program_id')->references('id')->on('scolar_programs')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('scolar_year_id')->references('id')->on('scolar_years')->onUpdate('cascade')->onDelete('cascade');
+        });
+
         // Add program facility relation
         Schema::create('facility_scolar_programs', function (Blueprint $table) {
             $table->increments('id');
@@ -41,7 +54,9 @@ class AddProgramToFacility extends Migration
         Schema::table('scolar_programs', function (Blueprint $table) {
             $table->dropForeign('scolar_programs_parent_id_foreign');
             $table->dropColumn('parent_id');
+            $table->dropColumn('name');
         });
+        Schema::dropIfExists('scolar_program_scolar_years');
         Schema::dropIfExists('facility_scolar_programs');
     }
 }
