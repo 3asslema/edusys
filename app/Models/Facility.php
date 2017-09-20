@@ -55,11 +55,21 @@ class Facility extends Model
 
     /**
      * Get employees
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function users()
     {
         return $this->belongsToMany(User::class,'facility_users')->withTimestamps();
+    }
+
+    /**
+     * Get admissions
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function admissions()
+    {
+        return $this->hasMany(Admission::class,'facility_id');
+
     }
 }
 

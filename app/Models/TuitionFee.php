@@ -24,4 +24,9 @@ class TuitionFee extends Model
     {
         return $this->belongsTo(\App\Models\ScolarProgram::class,'scolar_program_id');
     }
+
+    public function facility()
+    {
+        return $this->belongsTo(Facility::class,'facility_id');
+    }
 }

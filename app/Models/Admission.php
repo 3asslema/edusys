@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Admission extends Model
 {
-    protected $table = 'users';
+    protected $table = 'admissions';
 
     protected $attachmentsData;
 
@@ -17,9 +17,35 @@ class Admission extends Model
      */
     protected $fillable = [
         'created_by_id', 'student_id', 'contact_id', 'scolar_year_id',
-        'status','attachments', 'notes'
+        'facility_id','status','attachments'
     ];
 
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class,'created_by_id');
+    }
+
+    public function student()
+    {
+        return $this->belongsTo(User::class,'student_id');
+
+    }
+
+    public function contact()
+    {
+        return $this->belongsTo(User::class,'contact_id');
+
+    }
+    public function scolarYear()
+    {
+        return $this->belongsTo(ScolarYear::class,'scolar_year_id');
+
+    }
+    public function facility()
+    {
+        return $this->belongsTo(Facility::class,'facility_id');
+
+    }
     /**
      * Settings getter
      *

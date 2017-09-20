@@ -45,6 +45,18 @@ class EduSysTunisiaSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
 
         ]);
+        $CollegeFacilityId = DB::table('facilities')->insertGetId([
+            'name' => 'Collège Privée Avicenne',
+            'address' => '10, Rue Abdelhamid Tlili - Bardo',
+            'phone' => '71 516 090',
+            'fax' => '',
+            'email' => 'oussama.benbrahim1@gmail.com',
+            'organisation_id' => $organisationId,
+            'website' => '',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+
+        ]);
         DB::table('addresses')->delete();
         $addressId = DB::table('addresses')->insertGetId([
             'address' => 'Rue 8712 Bloc 53 Cité Olympique',
@@ -70,6 +82,12 @@ class EduSysTunisiaSeeder extends Seeder
         DB::table('facility_users')->delete();
         DB::table('facility_users')->insert([
             'facility_id' => $facilityId,
+            'user_id' => $userId,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ]);
+        DB::table('facility_users')->insert([
+            'facility_id' => $CollegeFacilityId,
             'user_id' => $userId,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -209,7 +227,7 @@ class EduSysTunisiaSeeder extends Seeder
 
         ]);
         DB::table('facility_scolar_programs')->insert([
-            'facility_id' =>$facilityId,
+            'facility_id' =>$CollegeFacilityId,
             'scolar_program_id' => $premierCycleId,
 
         ]);
@@ -264,7 +282,7 @@ class EduSysTunisiaSeeder extends Seeder
             'cost' => 318000,
             'periodicity' => 1,
             'scolar_program_id' => $enseignmentPrepaID,
-            'facility_id' =>$facilityId,
+            'facility_id' =>$CollegeFacilityId,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -274,7 +292,7 @@ class EduSysTunisiaSeeder extends Seeder
             'cost' => 84800,
             'periodicity' => 1,
             'scolar_program_id' => $enseignmentPrepaID,
-            'facility_id' =>$facilityId,
+            'facility_id' =>$CollegeFacilityId,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -284,7 +302,7 @@ class EduSysTunisiaSeeder extends Seeder
             'cost' => 31800,
             'periodicity' => 1,
             'scolar_program_id' => $enseignmentPrepaID,
-            'facility_id' =>$facilityId,
+            'facility_id' =>$CollegeFacilityId,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -294,7 +312,7 @@ class EduSysTunisiaSeeder extends Seeder
             'cost' => 20000,
             'periodicity' => 1,
             'scolar_program_id' => $enseignmentPrepaID,
-            'facility_id' =>$facilityId,
+            'facility_id' =>$CollegeFacilityId,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -400,7 +418,7 @@ class EduSysTunisiaSeeder extends Seeder
             'name' =>'7éme année (collège)' ,
             'scolar_program_id' => $enseignmentPrepaID,
             'tuition_fee_id' => $tfCollegeId,
-            'facility_id' =>$facilityId,
+            'facility_id' =>$CollegeFacilityId,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -408,7 +426,7 @@ class EduSysTunisiaSeeder extends Seeder
             'name' =>'8éme année (collège)' ,
             'scolar_program_id' => $enseignmentPrepaID,
             'tuition_fee_id' => $tfCollegeId,
-            'facility_id' =>$facilityId,
+            'facility_id' =>$CollegeFacilityId,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -416,7 +434,7 @@ class EduSysTunisiaSeeder extends Seeder
             'name' =>'9éme année (collège)' ,
             'scolar_program_id' => $enseignmentPrepaID,
             'tuition_fee_id' => $tfCollegeId,
-            'facility_id' =>$facilityId,
+            'facility_id' =>$CollegeFacilityId,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
