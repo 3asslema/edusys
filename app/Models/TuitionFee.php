@@ -15,7 +15,13 @@ class TuitionFee extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'is_scolar_year_fee', 'cost', 'periodicity'
+        'name', 'is_scolar_year_fee', 'cost', 'periodicity', 'scolar_program_id'
     ];
-
+    /**
+     * Get the scolar program.
+     */
+    public function program()
+    {
+        return $this->belongsTo(\App\Models\ScolarProgram::class,'scolar_program_id');
+    }
 }

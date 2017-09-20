@@ -15,7 +15,6 @@ class CreateAdmissionsTable extends Migration
     {
         Schema::create('admissions', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
         });
     }
 

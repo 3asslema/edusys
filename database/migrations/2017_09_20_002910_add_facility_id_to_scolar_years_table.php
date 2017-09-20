@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddUserToFacility extends Migration
+class AddFacilityIdToScolarYearsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class AddUserToFacility extends Migration
      */
     public function up()
     {
-        Schema::create('facility_users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id')->unsigned();
+        Schema::table('scolar_years', function (Blueprint $table) {
             $table->integer('facility_id')->unsigned();
 
-            $table->unique(['user_id', 'facility_id'], 'user_facility_unique');
-            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('facility_id')->references('id')->on('facilities')->onUpdate('cascade')->onDelete('cascade');
+
+
+
         });
     }
 
@@ -31,6 +30,9 @@ class AddUserToFacility extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('facility_users');
+        Schema::table('scolar_years', function (Blueprint $table) {
+            $table->dropForeign('scolar_years_facility_id_foreign');
+            $table->dropColumn('facility_id');
+        });
     }
 }
