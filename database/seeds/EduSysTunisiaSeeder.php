@@ -57,7 +57,29 @@ class EduSysTunisiaSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
 
         ]);
-        DB::table('addresses')->delete();
+        DB::table('admission_requirements')->delete();
+        $addressId = DB::table('admission_requirements')->insert([
+            'name' => 'Photos',
+            'facility_id' => $facilityId,
+]);
+        DB::table('admission_requirements')->delete();
+        $addressId = DB::table('admission_requirements')->insert([
+            'name' => 'Certificat de naissance',
+            'facility_id' => $facilityId,
+        ]);
+
+        DB::table('admission_requirements')->delete();
+        $addressId = DB::table('admission_requirements')->insert([
+            'name' => 'Photos',
+            'facility_id' => $CollegeFacilityId,
+        ]);
+        DB::table('admission_requirements')->delete();
+        $addressId = DB::table('admission_requirements')->insert([
+            'name' => 'Certificat de naissance',
+            'facility_id' => $CollegeFacilityId,
+        ]);
+
+            DB::table('addresses')->delete();
         $addressId = DB::table('addresses')->insertGetId([
             'address' => 'Rue 8712 Bloc 53 Cité Olympique',
             'city' => 'Tunis',

@@ -71,5 +71,16 @@ class Facility extends Model
         return $this->hasMany(Admission::class,'facility_id');
 
     }
+
+    /**
+     * Get admissions
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function admissionRequirements()
+    {
+
+        return $this->hasMany(AdmissionRequirement::class,'facility_id');
+
+    }
 }
 

@@ -12,8 +12,7 @@ class HomeController extends Controller
     public function index()
     {
         $user = JWTAuth::parseToken()->toUser();
-
-        $user->load(['address','role','facilities','facilities.users','facilities.tuitionFees','facilities.scolarPrograms','facilities.scolarPrograms', 'facilities.scolarYears', 'facilities.organisation', 'facilities.admissions']);
+        $user->load(['address','role','facilities','facilities.users','facilities.tuitionFees','facilities.scolarPrograms','facilities.scolarPrograms', 'facilities.scolarYears', 'facilities.organisation', 'facilities.admissions', 'facilities.admissionRequirements']);
 
         return response()->json(['user' => $user ]);
     }
