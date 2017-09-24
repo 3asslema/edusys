@@ -15,6 +15,8 @@ class AddUserSettingsField extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->text('settings')->nullable();
+            $table->boolean('is_active')->default(false);
+            $table->text('extra_fields')->nullable();
         });
     }
 
@@ -27,6 +29,8 @@ class AddUserSettingsField extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('settings');
+            $table->dropColumn('is_active');
+            $table->dropColumn('extra_fields');
         });
     }
 }

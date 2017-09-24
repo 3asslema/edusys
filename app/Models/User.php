@@ -12,6 +12,7 @@ class User extends Authenticatable
     protected $table = 'users';
 
     protected $settingsData;
+    protected $extraFieldsData;
 
     /**
      * The attributes that are mass assignable.
@@ -19,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'settings'
+        'name', 'email', 'password', 'settings', 'extra_fields'
     ];
 
     /**
@@ -106,6 +107,31 @@ class User extends Authenticatable
     {
         $this->settingsData = null;
         $this->attributes['settings'] = json_encode($settings);
+    }
+
+    /**
+     * Extra fields getter
+     *
+     * @return mixed
+     */
+    public function getExtraFieldsAttribute()
+    {
+        if ($this->extraFieldsData == null) {
+            $this->extraFieldsData = json_decode($this->attributes['extra_fields'], true);
+        }
+
+        return $this->extraFieldsData;
+    }
+
+    /**
+     * Extra fields setter
+     *
+     * @param array $settings
+     */
+    public function setExtraFieldsAttribute(array $extraFields)
+    {
+        $this->extraFieldsData = null;
+        $this->attributes['extra_fields'] = json_encode($extraFields);
     }
 
     /**
