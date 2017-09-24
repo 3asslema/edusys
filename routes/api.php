@@ -27,4 +27,8 @@ Route::group([
     'namespace' => 'API\V1',
     'middleware' => ['jwt.auth']],  function () {
         Route::get('/', 'HomeController@index');
+
+        // Admissions
+        Route::post('/admission', 'AdmissionController@store');
+        //->middleware('can:store, App\Models\Category');
 });
