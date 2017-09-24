@@ -20,6 +20,8 @@ class AddFieldsToAdmissionsTable extends Migration
             $table->integer('scolar_year_id')->unsigned();
             $table->integer('facility_id')->unsigned();
             $table->integer('academic_year_id')->unsigned();
+
+
             $table->string('status');
             $table->string('attachments');
             $table->timestamps();
@@ -30,6 +32,16 @@ class AddFieldsToAdmissionsTable extends Migration
             $table->foreign('scolar_year_id')->references('id')->on('scolar_years')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('facility_id')->references('id')->on('facilities')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('academic_year_id')->references('id')->on('academic_years')->onUpdate('cascade')->onDelete('cascade');
+
+        });
+        Schema::create('admission_tuition_fees', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('tuition_fee_id')->unsigned();
+            $table->integer('admission_id')->unsigned();
+
+            $table->foreign('tuition_fee_id')->references('id')->on('tuition_fees')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('admission_id')->references('id')->on('admissions')->onUpdate('cascade')->onDelete('cascade');
+
 
         });
     }

@@ -66,12 +66,12 @@ class AdmissionRepository extends BaseRepository
             $admission->save();
             $student->contacts()->attach($contact->id,['mobile_phone'=>$contact->extra_fields['mobile_phone'],'id_card_number' => $contact->extra_fields['mobile_phone']]);
             $contact->children()->attach($student->id);
-            //$admission-
+            $admission->tuitionFees()->attach($data['tuition_fees']);
         }catch (Exception $e) {
 
             Log::error($e->getMessage());
             DB::rollback();
-            throw new Exception("Could't process signup. Please try again.");
+            throw new Exception("Could't process admission. Please try again.");
         }
 
         DB::commit();

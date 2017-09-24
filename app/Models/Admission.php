@@ -46,6 +46,14 @@ class Admission extends Model
         return $this->belongsTo(Facility::class,'facility_id');
 
     }
+
+    /**
+     * get tuition fees
+     */
+    public function tuitionFees()
+    {
+        return $this->belongsToMany(TuitionFee::class,'admission_tuition_fees');
+    }
     /**
      * Settings getter
      *

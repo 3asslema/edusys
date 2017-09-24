@@ -34,7 +34,7 @@ class AdmissionController extends Controller
             ], 500);
         }
         $message = trans('app.success_message');
-
+        $admission->load(['student','contact']);
         return response()->json(['admission' => $admission, 'message' => $message], 201);
     }
 }

@@ -17,7 +17,7 @@ class AddContactToUser extends Migration
         Schema::create('user_contacts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('mobile_phone')->nullable();
-            $table->string('card_number')->nullable();
+            $table->string('id_card_number')->nullable();
             $table->integer('user_id')->unsigned();
             $table->integer('contact_id')->unsigned();
 
