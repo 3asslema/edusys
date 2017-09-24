@@ -14,7 +14,7 @@ class HomeController extends Controller
     {
         $user = JWTAuth::parseToken()->toUser();
         $academicYear = AcademicYear::orderBy('created_at', 'desc')->first();
-        $user->load(['address','role','facilities','facilities.users','facilities.tuitionFees','facilities.scolarPrograms','facilities.scolarPrograms', 'facilities.scolarYears', 'facilities.organisation', 'facilities.admissions', 'facilities.admissionRequirements']);
+        $user->load(['address','role','facilities','facilities.users','facilities.tuitionFees','facilities.scolarPrograms','facilities.scolarPrograms', 'facilities.scolarYears', 'facilities.organisation', 'facilities.admissions','facilities.admissions.student', 'facilities.admissionRequirements']);
 
         return response()->json(['user' => $user, 'academicYear' => $academicYear ]);
     }

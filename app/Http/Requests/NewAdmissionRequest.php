@@ -25,9 +25,10 @@ class NewAdmissionRequest extends FormRequest
     public function rules()
     {
         return [
-            'student.email' => 'required|unique|users|email',
-            'student.name' => 'required|max:255',
-            'student.extraFields.gender' => Rule::in(['m','f'])
+            'admission.student' => 'required',
+            'admission.student.email' => 'required|unique:users,email|email',
+            'admission.student.name' => 'required|max:255',
+            'admission.student.extra_fields.gender' => Rule::in(['m','f'])
         ];
     }
 }

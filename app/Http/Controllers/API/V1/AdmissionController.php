@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\API\V1;
 
+use App\Http\Requests\NewAdmissionRequest;
 use App\Repositories\AdmissionRepository;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Storage\DataBag;
 use Illuminate\Support\Facades\Log;
 
 class AdmissionController extends Controller
 {
+
     /**
      * Add new admission
      *

@@ -17,7 +17,7 @@ class Admission extends Model
      */
     protected $fillable = [
         'created_by_id', 'student_id', 'contact_id', 'scolar_year_id',
-        'facility_id','status','attachments'
+        'facility_id', 'academic_year_id', 'status','attachments'
     ];
 
     public function createdBy()

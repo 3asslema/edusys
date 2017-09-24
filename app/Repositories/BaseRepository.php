@@ -2,10 +2,13 @@
 
 namespace App\Repositories;
 
+use App\Storage\DataBag;
 use Illuminate\Database\Eloquent\Model;
+use App\Repositories\Repositories;
 
 class BaseRepository
 {
+    use Repositories;
     /**
      * The Model name.
      *
@@ -72,5 +75,13 @@ class BaseRepository
     public function destroy($id)
     {
         $this->getById($id)->delete();
+    }
+
+
+
+
+    protected function dataBag(array $data)
+    {
+        return new DataBag($data);
     }
 }

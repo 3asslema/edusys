@@ -66,28 +66,17 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    EduSys
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="https://github.com/3asslema/ng-edusys">Frontend GitHub</a>
+                    <a href="https://github.com/3asslema/edusys">Backend GitHub</a>
+                    <a href="https://edu-sys.slack.com/">Slack</a>
+                    <a href="https://join.skype.com/v49t1lukeAS8">Skype</a>
                 </div>
             </div>
         </div>

@@ -62,7 +62,7 @@ class User extends Authenticatable
      */
     public function contacts()
     {
-        return $this->belongsToMany(User::class,'user_contacts')
+        return $this->belongsToMany(User::class,'user_contacts', 'contact_id')
             ->withPivot('mobile_phone','card_id_number');
     }
 
@@ -83,6 +83,24 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class, 'role_id');
     }
+
+    /**
+     * Check if user has role
+     *
+     * @param \Illuminate\Database\Eloquent\Model $roleName
+     *
+     * @return bool
+     */
+    public function hasRole($roleName)
+    {
+        $role = $this->role;
+            if ($role->name == $roleName) {
+                return true;
+            }
+
+        return false;
+    }
+
 
     /**
      * Settings getter
