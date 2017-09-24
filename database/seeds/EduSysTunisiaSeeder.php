@@ -61,22 +61,27 @@ class EduSysTunisiaSeeder extends Seeder
         $addressId = DB::table('admission_requirements')->insert([
             'name' => 'Photos',
             'facility_id' => $facilityId,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
 ]);
-        DB::table('admission_requirements')->delete();
         $addressId = DB::table('admission_requirements')->insert([
             'name' => 'Certificat de naissance',
             'facility_id' => $facilityId,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
-        DB::table('admission_requirements')->delete();
         $addressId = DB::table('admission_requirements')->insert([
             'name' => 'Photos',
             'facility_id' => $CollegeFacilityId,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
-        DB::table('admission_requirements')->delete();
         $addressId = DB::table('admission_requirements')->insert([
             'name' => 'Certificat de naissance',
             'facility_id' => $CollegeFacilityId,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
             DB::table('addresses')->delete();
@@ -297,6 +302,28 @@ class EduSysTunisiaSeeder extends Seeder
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
 
+        ]);
+        
+        DB::table('tuition_fees')->insert([
+            'name' =>'Frais Inscription',
+            'is_scolar_year_fee' => false,
+            'cost' => 212000,
+            'periodicity' => 12,
+            'scolar_program_id' => $enseignementPrimaireId,
+            'facility_id' =>$facilityId,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+
+        DB::table('tuition_fees')->insert([
+            'name' =>'Frais Inscription',
+            'is_scolar_year_fee' => false,
+            'cost' => 212000,
+            'periodicity' => 12,
+            'scolar_program_id' => $enseignmentPrepaID,
+            'facility_id' =>$CollegeFacilityId,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         $tfCollegeId = DB::table('tuition_fees')->insertGetId([
             'name' =>'Scolarité Collège' ,
