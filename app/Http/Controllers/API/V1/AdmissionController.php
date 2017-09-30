@@ -33,8 +33,9 @@ class AdmissionController extends Controller
                 'error' => $e->getMessage(),
             ], 500);
         }
+        
         $message = trans('app.success_message');
-        $admission->load(['student','contact','scolarYear']);
+        $admission->load(['student','contact','facility','contact.address','scolarYear','tuitionFees']);
         return response()->json(['admission' => $admission, 'message' => $message], 201);
     }
 }
