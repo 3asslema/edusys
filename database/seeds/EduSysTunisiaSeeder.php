@@ -27,7 +27,7 @@ class EduSysTunisiaSeeder extends Seeder
             'address' => '10, Rue Abdelhamid Tlili - Bardo',
             'phone' => '71 516 090',
             'fax' => '',
-            'email' => 'oussama.benbrahim1@gmail.com',
+            'email' => 'demo@yopmail.com',
             'website' => '',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -38,7 +38,7 @@ class EduSysTunisiaSeeder extends Seeder
             'address' => '10, Rue Abdelhamid Tlili - Bardo',
             'phone' => '71 516 090',
             'fax' => '',
-            'email' => 'oussama.benbrahim1@gmail.com',
+            'email' => 'demo@yopmail.com',
             'organisation_id' => $organisationId,
             'website' => '',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
@@ -50,7 +50,7 @@ class EduSysTunisiaSeeder extends Seeder
             'address' => '10, Rue Abdelhamid Tlili - Bardo',
             'phone' => '71 516 090',
             'fax' => '',
-            'email' => 'oussama.benbrahim1@gmail.com',
+            'email' => 'demo@yopmail.com',
             'organisation_id' => $organisationId,
             'website' => '',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
@@ -97,9 +97,9 @@ class EduSysTunisiaSeeder extends Seeder
 
         DB::table('users')->delete();
         $userId = DB::table('users')->insertGetId([
-            'name' => 'Oussema Ben Brahin',
-            'email' => 'oussama.benbrahim1@gmail.com',
-            'password' => bcrypt('P@ssword'),
+            'name' => 'John Doe',
+            'email' => 'demo@yopmail.com',
+            'password' => bcrypt('password'),
             'address_id' => $addressId,
             'role_id' => $role->id,
             'settings' => json_encode(['language' => 'fr']),
