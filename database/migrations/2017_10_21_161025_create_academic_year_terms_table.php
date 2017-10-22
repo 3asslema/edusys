@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTutorsTable extends Migration
+class CreateAcademicYearTermsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTutorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tutors', function (Blueprint $table) {
+        Schema::create('academic_year_terms', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateTutorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tutors');
+        Schema::dropIfExists('academic_year_terms');
     }
 }

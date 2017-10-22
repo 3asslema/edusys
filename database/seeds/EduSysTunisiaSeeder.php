@@ -13,7 +13,6 @@ class EduSysTunisiaSeeder extends Seeder
      */
     public function run()
     {
-
         DB::table('academic_years')->delete();
         $yearId = DB::table('academic_years')->insertGetId([
             'name' => 'Année Scolaire 2017 / 2018',
@@ -415,7 +414,7 @@ class EduSysTunisiaSeeder extends Seeder
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
-        DB::table('scolar_years')->insert([
+        $premiereAnneeId =DB::table('scolar_years')->insertGetId([
             'name' =>'1ére année (école)',
             'scolar_program_id' => $enseignementPrimaireId,
             'tuition_fee_id' => $tfPremierePrimaireId,
@@ -484,6 +483,34 @@ class EduSysTunisiaSeeder extends Seeder
             'scolar_program_id' => $enseignmentPrepaID,
             'tuition_fee_id' => $tfCollegeId,
             'facility_id' =>$CollegeFacilityId,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+
+        DB::table('disciplines')->delete();
+        $mathId = DB::table('disciplines')->insertGetId([
+            'name' => 'Mathématique',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        $scienceId = DB::table('disciplines')->insertGetId([
+            'name' => 'Sciences Naturelles',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('study_programs')->delete();
+        $studyProgramId = DB::table('study_programs')->insertGetId([
+            'name' => 'Première Année Primaire',
+            'scolar_year_id' => $premiereAnneeId,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+
+        DB::table('subjects')->delete();
+        $algebraId = DB::table('subjects')->insertGetId([
+            'name' => 'Algebre',
+            'discipline_id' => $mathId,
+            'study_program_id' => $studyProgramId,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
