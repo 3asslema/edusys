@@ -20,7 +20,6 @@ class CreateStudyProgramsTable extends Migration
 
         });
         Schema::table('scolar_years', function (Blueprint $table) {
-            $table->increments('id');
             $table->integer('study_program_id')->unsigned();
             $table->timestamps();
 
