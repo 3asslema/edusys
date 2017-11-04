@@ -501,7 +501,6 @@ class EduSysTunisiaSeeder extends Seeder
         DB::table('study_programs')->delete();
         $studyProgramId = DB::table('study_programs')->insertGetId([
             'name' => 'Première Année Primaire',
-            'scolar_year_id' => $premiereAnneeId,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
