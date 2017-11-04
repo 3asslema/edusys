@@ -20,7 +20,7 @@ class CreateStudyProgramsTable extends Migration
 
         });
         Schema::table('scolar_years', function (Blueprint $table) {
-            $table->integer('study_program_id')->unsigned();
+            $table->integer('study_program_id')->unsigned()->nullable();
 
             $table->foreign('study_program_id')->references('id')->on('study_programs')->onUpdate('cascade')->onDelete('cascade');
 
